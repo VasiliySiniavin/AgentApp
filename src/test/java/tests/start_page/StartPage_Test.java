@@ -29,5 +29,6 @@ public class StartPage_Test extends StartPage {
         String expectedResult = "AgentApp";
         Assertions.assertEquals(expectedResult, actualResult);
         Assertions.assertTrue(getLogo());
+
     }
 }

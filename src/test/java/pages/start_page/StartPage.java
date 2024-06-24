@@ -81,6 +81,7 @@ public class StartPage {
         this.setLogin(strLogin);
         this.setPassword(strPassword);
         this.clickEnterButton();
+
     }
 }
 
