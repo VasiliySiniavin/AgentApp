@@ -21,7 +21,7 @@ public class StartPage_Test extends StartPage {
         open(Configuration.baseUrl);
     }
 
-    @Feature("Заголовок, логотип")
+    @Feature("Заголовок и логотип")
     @Test
     @Description("Позитивный. Проверка заголовка страницы, логотипа")
     public void testCheckTitilePage() {
