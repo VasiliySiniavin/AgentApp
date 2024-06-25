@@ -16,6 +16,7 @@ public class StartPage_Test extends StartPage {
     public void setUp() {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
+        Configuration.headless = true;
         Configuration.baseUrl = "https://partner.agentapp.ru/";
         Configuration.timeout = 10000;
         open(Configuration.baseUrl);
