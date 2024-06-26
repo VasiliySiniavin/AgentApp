@@ -23,7 +23,7 @@ public class StartPage_Test extends StartPage {
         Configuration.baseUrl = "https://partner.agentapp.ru/";
         Configuration.timeout = 10000;
         Configuration.browserCapabilities.setCapability("goog:chromeOptions", new HashMap<String, Object>() {{
-            put("args", Arrays.asList("--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu", "--disable-extensions", "--remote-allow-origins=*"));
+            put("args", Arrays.asList("--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu", "--remote-allow-origins=*"));
         }});
         open(Configuration.baseUrl);
     }
