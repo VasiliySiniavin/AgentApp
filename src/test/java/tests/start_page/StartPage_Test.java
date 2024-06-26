@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Selenide.*;
 import io.qameta.allure.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pages.start_page.StartPage;
 
 import java.util.Arrays;
@@ -22,6 +23,8 @@ public class StartPage_Test extends StartPage {
        // Configuration.headless = true;
         Configuration.baseUrl = "https://partner.agentapp.ru/";
         Configuration.timeout = 10000;
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary("/usr/bin/google-chrome");
         Configuration.browserCapabilities.setCapability("goog:chromeOptions", new HashMap<String, Object>() {{
             put("args", Arrays.asList("--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu", "--remote-allow-origins=*"));
         }});
