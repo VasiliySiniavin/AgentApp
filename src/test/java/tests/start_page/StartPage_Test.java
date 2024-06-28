@@ -25,7 +25,7 @@ public class StartPage_Test extends StartPage {
         Configuration.baseUrl = "https://partner.agentapp.ru/";
         Configuration.timeout = 10000;
         ChromeOptions options = new ChromeOptions();
-        options.setBinary("/opt/google/chrome/google-chrome");
+      //  options.setBinary("/opt/google/chrome/google-chrome");
         Configuration.browserCapabilities.setCapability("goog:chromeOptions", new HashMap<String, Object>() {{
             put("args", Arrays.asList("--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu", "--remote-allow-origins=*"));
         }});
