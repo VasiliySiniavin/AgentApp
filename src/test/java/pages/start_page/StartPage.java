@@ -11,7 +11,7 @@ public class StartPage {
     SelenideElement formAuth = $x("//app-login-form/ui-form");
     SelenideElement logo = $x("//div/img");
     SelenideElement loginText = $x("//*[@id=\"username\"]/div/ui-field-title");
-    SelenideElement login = $(By.id("username"));
+    SelenideElement login = $x("//*[@id=\"username\"]/label/input");
     SelenideElement passwordText = $x("//*[@id=\"password\"]/div/ui-field-title");
     SelenideElement password = $(By.id("password"));
     SelenideElement errorText = $x("//ui-field-error");
@@ -41,6 +41,7 @@ public class StartPage {
     }
     @Step("Установить значение в поле Логин")
     public void setLogin(String strLogin) {
+        login.click();
         login.setValue(strLogin).pressEnter();
     }
     @Step("Проверка текста поля Пароль")
