@@ -1,38 +1,30 @@
 package tests.start_page;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Selenide.*;
 import io.qameta.allure.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import pages.start_page.StartPage;
+import readConfiguraton.ConfigProvider;
 
 
 @Epic("Тестирование Cтартовой страницы")
 public class StartPage_Test extends StartPage {
 
-    @BeforeEach
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-      //  System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver/chromedriver");
-        Configuration.browser = "chrome";
-        Configuration.baseUrl = "https://partner.agentapp.ru/";
-        Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 10000;
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        WebDriver driver = new ChromeDriver(options);
-        open(Configuration.baseUrl);
+    @BeforeAll
+    public static void globalSetUp() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .includeSelenideSteps(true)
+        );
+        // System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver/chromedriver");
+        Configuration.browserSize = ConfigProvider.SIZE;
+        open(ConfigProvider.URL);
     }
-
 
     @Feature("Заголовок и логотип")
     @Test
@@ -60,7 +52,7 @@ public class StartPage_Test extends StartPage {
     @Test
     @Description("Позитивный. Проверка появления поля Пароль после успешного ввода Email ")
     public void testCheckPassworFiled() {
-        setLogin("qa@qa.qa");
+        setLogin(ConfigProvider.LOGIN);
         Boolean actualResultPassword = getPassword();
         Assertions.assertTrue(actualResultPassword);
     }
