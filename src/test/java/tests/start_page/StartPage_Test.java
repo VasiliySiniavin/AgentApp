@@ -22,6 +22,7 @@ public class StartPage_Test extends StartPage {
                 .includeSelenideSteps(true)
         );
         // System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver/chromedriver");
+        Configuration.browserSize = ConfigProvider.BROWSER;
         Configuration.browserSize = ConfigProvider.SIZE;
         open(ConfigProvider.URL);
     }
