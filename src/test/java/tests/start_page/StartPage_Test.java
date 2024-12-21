@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import static com.codeborne.selenide.Selenide.*;
 import io.qameta.allure.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pages.start_page.StartPage;
 import readConfiguraton.ConfigProvider;
 
@@ -22,8 +23,12 @@ public class StartPage_Test extends StartPage {
                 .includeSelenideSteps(true)
         );
         // System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver/chromedriver");
-        Configuration.browserSize = ConfigProvider.BROWSER;
-        Configuration.browserSize = ConfigProvider.SIZE;
+       /* Configuration.browserSize = ConfigProvider.BROWSER;
+        Configuration.browserSize = ConfigProvider.SIZE;*/
+        Configuration.headless = true; // Запуск без интерфейса
+        Configuration.browserCapabilities = new ChromeOptions()
+                .setBinary("/opt/google/chrome/google-chrome")
+                .addArguments("--headless=new", "--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu", "--window-size=1920,1080");
         open(ConfigProvider.URL);
     }
 
